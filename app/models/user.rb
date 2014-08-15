@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :votes
   has_secure_password
 
-  validate :username, length: { minimum: 3, message: "Username is too short" }
-  validate :email, uniqueness: true, format: { with: /.+@.+\..+/, message: "Email is invalid." }
-  validate :password, length: { minimum: 5, message: "Password is too short" }
+  validates :username, length: { minimum: 3, message: "Username is too short" }
+  validates :email, uniqueness: true, format: { with: /.+@.+\..+/, message: "Email is invalid." }
+  validates :password, length: { minimum: 5, message: "Password is too short" }
 end
