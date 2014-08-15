@@ -1,4 +1,4 @@
 <form method="post" action="/posts/<%=@post.id%>/votes" name="post-vote">
-  <input type="submit" name="vote" value="1">
-  <input type="submit" name="vote" value="-1">
+  <small><button type="submit" name="vote" value="1">&#9650;</button></small>
+  <small><button type="submit" name="vote" value="-1">&#9660;</button></small>
 </form>

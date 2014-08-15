@@ -1,0 +1,53 @@
+.container {
+  margin: -20px auto;
+  width: 789px;
+  padding: 20px 20px 20px 20px;
+  background-color: #F6F6EF;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+  float: left;
+  padding-right: 20px;
+}
+
+nav {
+  margin: 20px auto;
+  width: 789px;
+  padding: 0px 20px 20px 20px;
+  background-color: #ea4a3c;
+  line-height: 20px;
+}
+
+button {
+  background:none;
+  border:none;
+  padding:0;
+  cursor: pointer;
+}
+
+a:link {
+  color: #111111;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: #111111;
+  text-decoration: none;
+}
+
+form[name="post-vote"] {
+  display: inline;
+}
+
+#add {
+  background-color: #ea4a3c;
+  padding: 5px;
+}

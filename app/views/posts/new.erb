@@ -1,6 +1,7 @@
-<form action="/posts" method="post" name="new_post">
-  <input type="text" name="post[text]" placeholder="enter some feedback!">
-  Post anonymously?<input type="checkbox" name="post[is_anonymous?]" value="<%= true %>">
-  <input type="submit" value="Submit">
-
-</form>
+<div class="container">
+  <form action="/posts" method="post" name="new_post">
+    <input type="text" name="post[text]" placeholder="enter some feedback!">
+    Post anonymously?<input type="checkbox" name="post[is_anonymous?]" value="<%= true %>">
+    <input type="submit" value="Submit">
+  </form>
+</div>

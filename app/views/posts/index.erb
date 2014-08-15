@@ -1,8 +1,19 @@
-<a href="/posts/new">Create Post</a>
-<% @posts.each do |post| %>
-  <a href="/posts/<%= post.id %>"><h3><%= post.text %></h3></a>
-  <%= post.votes.sum('value') %>
-  <% @post = post %>
-  <%= erb :'/partials/_votes' %>
-  <%= post.name_type %>
-<% end %>
+<div class="container">
+  <% i = 0 %>
+  <% @posts.each do |post| %>
+    <%= i += 1 %>.
+    <form method="post" action="/posts/<%=post.id%>/votes" name="post-vote">
+      <small><button type="submit" name="vote" value="1">&#9650;</button></small>
+      <small><button type="submit" name="vote" value="-1">&#9660;</button></small>
+    </form>
+    <span class><a href="/posts/<%= post.id %>"><%= post.text %></a></span>
+    <p>
+      <small>
+        <%= post.vote_sum %> points
+        by <%= post.name_type %>
+        <%= post.comments.count %> comments
+      </small>
+    </p>
+    <br>
+  <% end %>
+</div>

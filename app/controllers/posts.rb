@@ -1,5 +1,5 @@
 get '/posts' do
-  @posts = Post.all
+  @posts = Post.order("vote_sum desc")
 
   erb :'posts/index'
 end
@@ -7,7 +7,11 @@ end
 get '/posts/new' do
   @user = current_user
 
-  erb :'posts/new'
+  if current_user
+    erb :'posts/new'
+  else
+    redirect '/login'
+  end
 end
 
 get '/posts/:post_id' do

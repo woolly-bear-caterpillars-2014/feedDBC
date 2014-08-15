@@ -48,11 +48,17 @@ Post.create(
 
 # VOTES
 20.times do
+  v = rand(-1..1)
+  p = rand(1..21)
+  q = rand(1..499)
   Vote.create(
     user_id: rand(1..11),
-    post_id: rand(1..21),
-    value: rand(-1..1)
+    post_id: p,
+    value: v
   )
+  po = Post.find(p)
+  vote_sum = po.vote_sum += q
+  po.update(vote_sum: vote_sum)
 end
 
 # COMMENTS

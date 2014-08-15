@@ -18,6 +18,26 @@
   <title></title>
 </head>
 <body>
+  <nav>
+    <% if current_user %>
+        <li><strong><a href="/">Hacker News</a></strong></li>
+        <li><a href='/posts/new'>submit</a></li>
+        <li><%= current_user.username %></a></li>
+        <li>
+          <form name="input" action="/logout" method="post">
+            <input name="_method" type="hidden" value="delete" />
+            <button type="submit">logout</button>
+          </form>
+        </li>
+    <% else %>
+      <ul>
+        <li><strong><a href="/">Hacker News</a></strong></li>
+        <li><a href='/posts/new'>submit</a></li>
+        <li><a href='/login'>login</a></li>
+        <li><a href='/signup'>signup</a></li>
+      </ul>
+    <% end %>
+  </nav>
   <%= yield %>
 </body>
 </html>

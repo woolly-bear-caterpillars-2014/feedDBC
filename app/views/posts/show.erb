@@ -1,7 +1,12 @@
-<%= @post.text %>
-<%= @post.name_type %>
-<p>Vote Count:<%= @post.votes.sum('value') %></p>
-<p>Vote</p>
-<%= erb :'/partials/_votes' %>
-<p>Comments</p>
-<%= erb :'/partials/_comments' %>
+<div class="container">
+  <%= erb :'/partials/_votes' %>
+    <span class><a href="/posts/<%= @post.id %>"><%= @post.text %></a></span>
+    <p>
+      <small>
+        <%= @post.vote_sum %> points
+        by <%= @post.name_type %>
+        <%= @post.comments.count %> comments
+      </small>
+    </p>
+  <%= erb :'/partials/_comments' %>
+</div>
