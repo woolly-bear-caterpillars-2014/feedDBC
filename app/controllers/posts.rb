@@ -6,6 +6,7 @@ end
 
 get '/posts/new' do
   @user = current_user
+
   erb :'posts/new'
 end
 
