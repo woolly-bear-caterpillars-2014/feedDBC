@@ -32,6 +32,3 @@ post "/signup" do
     erb :"users/sign_up"
   end
 end
-
-
-

@@ -5,8 +5,7 @@ get '/posts' do
 end
 
 get '/posts/new' do
-  @user = User.find(session[:user_id])
-
+  @user = current_user
   erb :'posts/new'
 end
 
@@ -17,6 +16,7 @@ get '/posts/:post_id' do
 end
 
 post '/posts' do
+  params[:post][:user_id] = current_user.id
   Post.create(params[:post])
 
   redirect '/posts'

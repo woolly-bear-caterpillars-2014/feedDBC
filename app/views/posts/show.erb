@@ -1,9 +1,5 @@
 <%= @post.text %>
-<% if @post.is_anonymous? %>
-  <p>Anonymous</p>
-<% else %>
-  <p><%= @post.user.username %></p>
-<% end %>
+<%= @post.name_type %>
 <p>Vote</p>
 <%= erb :'_votes' %>
 <p>Comments</p>
