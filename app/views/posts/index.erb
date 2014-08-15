@@ -2,5 +2,7 @@
 <% @posts.each do |post| %>
   <a href="/posts/<%= post.id %>"><h3><%= post.text %></h3></a>
   <%= post.votes.sum('value') %>
+  <% @post = post %>
+  <%= erb :'/partials/_votes' %>
   <%= post.name_type %>
 <% end %>
