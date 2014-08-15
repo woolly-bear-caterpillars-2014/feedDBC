@@ -3,7 +3,8 @@ get "/login" do
 end
 
 post "/login" do
-  user = User.authenticate(params[:username], params[:password])
+  user = User.find_by(username: params[:username])
+  user.authenticate(params[:password])
   if user
     session[:user_id] = user.id
     redirect "/"
@@ -23,7 +24,7 @@ get "/signup" do
 end
 
 post "/signup" do
-  @user = User.new(parmas[:user])
+  @user = User.new(params[:user])
   if @user.save
     session[:user_id] = @user.id
     redirect "/"
