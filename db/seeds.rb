@@ -19,21 +19,31 @@ User.create(
 )
 
 # POSTS
-20.times do
+10.times do
   Post.create(
-    user_id: rand(1..11)
-    text: Faker::Lorem.sentence
-    archive?:
+    user_id: rand(1..11),
+    text: Faker::Lorem.sentence,
+    archive?: false,
     is_anonymous?: false
+  )
+end
+
+# ANONYMOUS POSTS
+10.times do
+  Post.create(
+    user_id: rand(1..11),
+    text: Faker::Lorem.sentence,
+    archive?: false,
+    is_anonymous?: true
   )
 end
 
 # ADMIN POST
 Post.create(
-  user_id: 11
-  text:
-  archive?:
-  is_anonymous?:
+  user_id: 11,
+  text: Faker::Lorem.sentence,
+  archive?: false,
+  is_anonymous?: false
 )
 
 # VOTES
@@ -46,11 +56,21 @@ Post.create(
 end
 
 # COMMENTS
-40.times do
+20.times do
   Comment.create(
-    post_id: rand(1..21)
-    text:
-    value:
-    is_anonymous?:
+    post_id: rand(1..21),
+    user_id: rand(1..11),
+    text: Faker::Lorem.sentence,
+    is_anonymous?: false
+  )
+end
+
+# ANONYMOUS COMMENTS
+20.times do
+  Comment.create(
+    post_id: rand(1..21),
+    user_id: rand(1..11),
+    text: Faker::Lorem.sentence,
+    is_anonymous?: true
   )
 end

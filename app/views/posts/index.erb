@@ -1,6 +1,8 @@
 <% @posts.each do |post| %>
-  <%= post.text %>
-  <%= post.user %>
-  <%= post.archive? %>
-  <%= post.is_anonymous? %>
+  <a href="/posts/<%= post.id %>"><h3><%= post.text %></h3></a>
+  <% if post.is_anonymous? %>
+    <p>Anonymous</p>
+  <% else %>
+    <p><%= post.user.username %></p>
+  <% end %>
 <% end %>
