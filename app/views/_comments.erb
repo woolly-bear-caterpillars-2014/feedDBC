@@ -1,0 +1,5 @@
+<form action="/posts/<%=@post.id%>/comments" method="post">
+  <textarea name="comment[text]" placeholder="tweet sized feedback"><br>
+  <input type="checkbox" value="true" name ="comment[anonymous]"> Anonymous<br>
+  <input type="submit" value="add">
+</form>
