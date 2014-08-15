@@ -1,0 +1,6 @@
+<%= @post.text %>
+<% if @post.is_anonymous? %>
+  <p>Anonymous</p>
+<% else %>
+  <p><%= @post.user.username %></p>
+<% end %>
