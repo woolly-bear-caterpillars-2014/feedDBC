@@ -1,6 +1,6 @@
 <form name="add_comment" action="/posts/<%=@post.id%>/comments" method="post">
   <textarea name="comment[text]" placeholder="tweet sized feedback"></textarea><br>
-  <input type="checkbox" value="true" name ="comment[anonymous]"> Anonymous<br>
+  <input type="checkbox" value="true" name ="comment[is_anonymous?]"> Anonymous<br>
   <input type="submit" value="add">
 </form>
 <% if @post.comments %>
