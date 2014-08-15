@@ -1,0 +1,6 @@
+<% @posts.each do |post| %>
+  <%= post.text %>
+  <%= post.user %>
+  <%= post.archive? %>
+  <%= post.is_anonymous? %>
+<% end %>
