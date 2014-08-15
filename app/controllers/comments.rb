@@ -1,5 +1,8 @@
 post "/posts/:post_id/comments" do
-  comment = Comment.create(params[:comment])
+  comments_hash = params[:comment].merge(user_id: session[:user_id], post_id: params[:post_id])
+  p comments_hash
+  comment = Comment.create(comments_hash)
+  p comment
   if comment
     return comment.to_json
   else

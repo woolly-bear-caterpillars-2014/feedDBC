@@ -4,3 +4,7 @@
 <% else %>
   <p><%= @post.user.username %></p>
 <% end %>
+<p>Vote</p>
+<%= erb :'_votes' %>
+<p>Comments</p>
+<%= erb :'_comments' %>
