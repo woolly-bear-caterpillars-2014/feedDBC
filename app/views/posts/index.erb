@@ -1,8 +1,5 @@
+<a href="/posts/new">Create Post</a>
 <% @posts.each do |post| %>
   <a href="/posts/<%= post.id %>"><h3><%= post.text %></h3></a>
-  <% if post.is_anonymous? %>
-    <p>Anonymous</p>
-  <% else %>
-    <p><%= post.user.username %></p>
-  <% end %>
+  <%= post.name_type %>
 <% end %>
