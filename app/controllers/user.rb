@@ -1,5 +1,9 @@
 get "/login" do
-  erb :"users/login"
+  if current_user
+    redirect "/"
+  else
+    erb :"users/login"
+  end
 end
 
 post "/login" do
@@ -20,7 +24,11 @@ delete "/logout" do
 end
 
 get "/signup" do
-  erb :"users/signup"
+  if current_user
+    redirect "/"
+  else
+    erb :"users/signup"
+  end
 end
 
 post "/signup" do
