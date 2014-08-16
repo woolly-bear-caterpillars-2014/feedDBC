@@ -1,8 +1,13 @@
+body {
+  background-color: #20272D;
+}
+
 .container {
-  margin: -20px auto;
+  margin: 20px auto;
   width: 789px;
   padding: 20px 20px 20px 20px;
   background-color: #F6F6EF;
+  -webkit-box-shadow: 0 0 11px 1px #111;
 }
 
 ul {
@@ -14,15 +19,18 @@ ul {
 li {
   display: inline;
   float: left;
-  padding-right: 20px;
+  padding-left: 20px;
 }
 
 nav {
-  margin: 20px auto;
-  width: 789px;
-  padding: 0px 20px 20px 20px;
-  background-color: #ea4a3c;
-  line-height: 20px;
+  background-color: #02a9b9;
+  width: 100%;
+  font-size: 15px;
+  height: 50px;
+  position: relative;
+  z-index: 10;
+  -webkit-box-shadow: 0 0 11px 1px #111;
+  line-height: 50px;
 }
 
 button {
@@ -37,7 +45,6 @@ a:link {
   text-decoration: none;
 }
 
-/* visited link */
 a:visited {
   color: #111111;
   text-decoration: none;
@@ -48,6 +55,6 @@ form[name="post-vote"] {
 }
 
 #add {
-  background-color: #ea4a3c;
+  background-color: #02a9b9;
   padding: 5px;
 }
