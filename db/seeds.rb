@@ -47,10 +47,10 @@ Post.create(
 )
 
 # VOTES
-20.times do
+50.times do
   v = rand(-1..1)
   p = rand(1..21)
-  q = rand(1..499)
+  q = rand(15..45)
   Vote.create(
     user_id: rand(1..11),
     post_id: p,

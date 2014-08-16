@@ -11,13 +11,14 @@
       </small>
     </form>
     <span class><a href="/posts/<%= post.id %>"><%= post.text %></a></span>
-    <p>
+    <br>
       <small>
         <%= post.vote_sum %> points
-        by <%= post.name_type %>
+        by <%= post.name_type %> |
         <%= post.comments.count %> comments
       </small>
-    </p>
+    <br>
+    <br>
     <br>
   <% end %>
 </div>

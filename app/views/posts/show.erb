@@ -1,12 +1,13 @@
 <div class="container">
   <%= erb :'/partials/_votes' %>
     <span class><a href="/posts/<%= @post.id %>"><%= @post.text %></a></span>
-    <p>
-      <small>
-        <%= @post.vote_sum %> points
-        by <%= @post.name_type %>
-        <%= @post.comments.count %> comments
-      </small>
-    </p>
+    <br>
+    <small>
+      <%= @post.vote_sum %> points
+      by <%= @post.name_type %> |
+      <%= @post.comments.count %> comments
+    </small>
+    <br>
+    <br>
   <%= erb :'/partials/_comments' %>
 </div>
