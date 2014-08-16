@@ -3,7 +3,7 @@
     <span class><a href="/posts/<%= @post.id %>"><%= @post.text %></a></span>
     <br>
     <small>
-      <%= @post.vote_sum %> points
+      <span id="post-<%=@post.id%>-vote-sum"><%= @post.vote_sum %></span> points
       by <%= @post.name_type %> |
       <%= @post.comments.count %> comments
     </small>
