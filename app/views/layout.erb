@@ -11,6 +11,7 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
+  <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
@@ -20,24 +21,26 @@
 <body>
   <nav>
     <% if current_user %>
-        <li><strong><a href="/">FeeDBC</a></strong></li>
+        <li><strong><a href="/">FEEDBC</a></strong></li>
         <li><a href='/posts/new'>submit</a></li>
         <li><%= current_user.username %></a></li>
         <li>
-          <form name="input" action="/logout" method="post">
-            <input name="_method" type="hidden" value="delete" />
+          <form name="input" action="/logout" method="get">
             <button type="submit">logout</button>
           </form>
         </li>
     <% else %>
       <ul>
-        <li><strong><a href="/">FeeDBC</a></strong></li>
+        <li><strong><a href="/">FEEDBC</a></strong></li>
         <li><a href='/posts/new'>submit</a></li>
         <li><a href='/login'>login</a></li>
         <li><a href='/signup'>signup</a></li>
       </ul>
     <% end %>
   </nav>
+
+  <center><h2> Be specific, actionable, and kind. </h2></center>
+
   <%= yield %>
 </body>
 </html>

@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration
       t.boolean :archive?
       t.boolean :is_anonymous?
       t.integer :vote_sum, default: 0
+      t.timestamps
     end
   end
 end

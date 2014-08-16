@@ -1,7 +1,15 @@
 <div class="container">
+  Add your feedback below:
+  <br>
+  <br>
   <form action="/posts" method="post" name="new_post">
-    <input type="text" name="post[text]" placeholder="enter some feedback!">
-    Post anonymously?<input type="checkbox" name="post[is_anonymous?]" value="<%= true %>">
+    <textarea name="post[text]" placeholder="tweet sized feedback!" rows="4" cols="50"></textarea>
+    <br>
+    <br>
+    <input type="checkbox" name="post[is_anonymous?]" value="<%= true %>">
+    post anonymously
+    <br>
+    <br>
     <input type="submit" value="Submit">
   </form>
 </div>

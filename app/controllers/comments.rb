@@ -4,11 +4,11 @@ post "/posts/:post_id/comments" do
     p comments_hash
     comment = Comment.create(comments_hash)
     p comment
-    if comment
-      return comment.to_json
-    else
-      return 'error'
-    end
+    # if comment
+    #   return comment.to_json
+    # else
+    #   return 'error'
+    # end
   else
     redirect "/login"
   end

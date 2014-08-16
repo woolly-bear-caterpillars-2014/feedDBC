@@ -5,6 +5,7 @@ class CreateComments < ActiveRecord::Migration
       t.belongs_to :user
       t.string :text
       t.boolean :is_anonymous?
+      t.timestamps
     end
   end
 end
