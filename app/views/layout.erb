@@ -19,27 +19,60 @@
   <title></title>
 </head>
 <body>
-  <nav>
+  <nav id="header_navbar">
     <% if current_user %>
         <li><strong><a href="/">feeDBC</a></strong></li>
         <li><a href='/posts/new'>submit</a></li>
-        <li><%= current_user.username %></a></li>
+        <li><%= current_user.username %></li>
         <li>
           <form name="input" action="/logout" method="get">
-            <button type="submit">logout</button>
+            <button type="submit" name="logout">logout</button>
           </form>
         </li>
     <% else %>
       <ul>
         <li><strong><a href="/">feeDBC</a></strong></li>
         <li><a href='/posts/new'>submit</a></li>
-        <li><a href='/login'>login</a></li>
-        <li><a href='/signup'>signup</a></li>
+        <li id="current_user">
+          <button type="submit" name="login">login</button>
+        </li>
+        <li id="signup_button">
+          <button type="submit" name="signup">signup</button>
+        </li>
       </ul>
     <% end %>
   </nav>
 
   <center><h2> Be actionable, specific, and kind. </h2></center>
+
+  <!-- Hidden Signup -->
+  <div class="row-submit" id="signupStudent" style="display: none;">
+    <h3>Sign Up</h3>
+
+    <form name="signup" action="/signup" method="post">
+      <input type="text" name="user[username]" placeholder="username"/><br>
+      <br>
+      <input type="text" name="user[email]" placeholder="email"/><br>
+      <br>
+      <input type="password" name="user[password]" placeholder="password"/><br>
+      <br>
+      <button type="submit" name="signup_submit">signup</button>
+    </form>
+  </div>
+
+
+  <!-- Hidden Login -->
+  <div class="row-submit" id="loginStudent" style="display: none;">
+    <h3>Login</h3>
+
+    <form name="login" action="/login" method="post">
+      <input type="text" name="username" placeholder="username"/><br>
+      <br>
+      <input type="password" name="password" placeholder="password"/><br>
+      <br>
+      <button type="submit" name="login_submit">login</button>
+    </form>
+  </div>
 
   <%= yield %>
 </body>

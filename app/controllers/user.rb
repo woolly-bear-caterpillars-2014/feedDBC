@@ -11,7 +11,7 @@ post "/login" do
   user.authenticate(params[:password])
   if user
     session[:user_id] = user.id
-    redirect "/"
+    return user.to_json
   else
     @error = "Invalid username/password combination."
     erb :"users/login"
@@ -23,20 +23,24 @@ get "/logout" do
   redirect "/"
 end
 
-get "/signup" do
-  if current_user
-    redirect "/"
-  else
-    erb :"users/signup"
-  end
-end
+# get "/signup" do
+#   if current_user
+#     redirect "/"
+#   else
+#     erb :"users/signup"
+#   end
+# end
 
 post "/signup" do
-  @user = User.new(params[:user])
-  if @user.save
-    session[:user_id] = @user.id
-    redirect "/"
-  else
-    erb :"users/sign_up"
-  end
+  p user = User.create(params[:user])
+  session[:user_id] = user.id
+
+  p user.to_json
+
+  # if user.save
+  #   session[:user_id] = user.id
+  # else
+  #   erb :"post/index"
+  # end
+
 end

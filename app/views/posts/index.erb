@@ -1,4 +1,20 @@
 <div class="container">
+
+  <!-- Hidden Signup -->
+  <div class="row-submit" id="signupStudent" style="display: none;">
+    <h3>Sign Up</h3>
+
+    <form name="signup" action="/signup" method="post">
+      <input type="text" name="user[username]" placeholder="username"/><br>
+      <br>
+      <input type="text" name="user[email]" placeholder="email"/><br>
+      <br>
+      <input type="password" name="user[password]" placeholder="password"/><br>
+      <br>
+      <button type="submit" name="signup_submit">sign up</button>
+    </form>
+  </div>
+
   <% i = 0 %>
   <% @posts.each do |post| %>
     <%= i += 1 %>.
