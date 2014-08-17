@@ -11,43 +11,18 @@ $(document).ready(function() {
         buttonSubmitForm = $('form[name=new_post]'),
         submit = $('#submitFeedback'),
 
-        container = $('#container');
+        buttonVote = $('button[name=vote]'),
+        addCommentForm = $('form[name=add_comment]'),
 
-    $('button[name=vote]').on('click', function(event) {
-        event.preventDefault();
-        vote = Number($(this).val());
-        action = $(this).parent().parent('form[name=post-vote]').attr('action');
-        $.ajax(action, {
-            method: 'post',
-            data: {vote: vote},
-            dataType: 'json'
-        }).done(function(response) {
-            console.log(response)
-            if (response.post_id) {
-                span = $("span#post-" + response.post_id + "-vote-sum");
-                span.text(Number(span.text()) + vote);
-            }
-        })
-    })
+        container = $('#container'),
 
-    $('form[name=add_comment]').on('submit', function(event){
-        event.preventDefault();
-        action = $(this).attr('action');
-        console.log(action);
-        $.ajax(action, {
-        method: 'post',
-        data: $(this).serialize(),
-        dataType: $(this).serialize(),
-      }
-    ).done(function(response) {
-        $('form[name=add_comment] textarea').val('');
-        $('form[name=add_comment] input[type="checkbox"]').attr('checked', false);
-        var html = '<div class="comment">' + response.comment +
-                            '<small><div class="author">posted by: '+ response.user +
-                            '</div></small></div>';
-            $(".comment-list").append(html);
-        })
-    })
+        submitButtonId = $('#submit_button'),
+        currentUserId = $('#current_user'),
+        signupButtonnId = $('#signup_button');
+
+
+    buttonVote.on('click', updateVotes);
+    addCommentForm.on('submit', addComments);
 
 
     // enable the user to exit the hidden submit,
@@ -74,6 +49,58 @@ $(document).ready(function() {
 
     // feedback ajax
     buttonSubmitForm.on('submit', submitFeedback);
+
+
+
+    /* BELOW IS HELPER FUNCTION LAND!!!
+     *
+     * Should refactor outside of $(document).ready,
+     * but had an issue with understanding scope of the variables
+     *
+     */
+
+    function updateVotes() {
+        event.preventDefault();
+        vote = Number($(this).val());
+        action = $(this).parent().parent('form[name=post-vote]').attr('action');
+
+        $.ajax(action, {
+            method: 'post',
+            data: {vote: vote},
+            dataType: 'json'
+        }).done(function(response) {
+            if (response.post_id) {
+                span = $("span#post-" + response.post_id + "-vote-sum");
+                span.text(Number(span.text()) + vote);
+            }
+        })
+    }
+
+
+    function addComments () {
+        event.preventDefault();
+        action = $(this).attr('action');
+        console.log(action);
+        $.ajax(action, {
+            method: 'post',
+            data: $(this).serialize(),
+            dataType: 'json'
+       }).done(function(response) {
+            console.log(response);
+            $('form[name=add_comment] textarea').val('');
+            $('form[name=add_comment] input[type="checkbox"]').attr('checked', false);
+
+            var html =
+                '<div class="comment">' +
+                  response.comment +
+                  '<small><div class="author">' +
+                    'posted by: ' + response.user +
+                  '</div></small>' +
+                '</div><br>';
+
+            $(".comment-list").append(html);
+        })
+    }
 
 
     function backgroundFadeIn() {
@@ -123,22 +150,32 @@ $(document).ready(function() {
 
         signup.fadeOut('fast');
         login.fadeOut('fast');
-        submit.fadeIn('fast');  
+        submit.fadeIn('fast');
     }
 
     function injectHtmlOnLogin(response) {
-        html = '<li id="current_user">' +
-          '<button type="submit" name="profile">Welcome ' + response.username + '</button>' +
-        '</li>';
+        html = 
+          '<li id="current_user">' +
+            '<button type="submit" name="profile">' +
+              'Welcome ' + response.username +
+            '</button>' +
+          '</li>';
 
-        logoutButtonHTML = '<li><form name="input" action="/logout" method="get">' +
-          '<button type="submit" name="logout">Logout</button>' +
+        logoutButtonHTML =
+          '<li><form name="input" action="/logout" method="get">' +
+            '<button type="submit" name="logout">Logout</button>' +
           '</form></li>';
-        submit_button = '<li id="submit_button"><button type="button" name="submit_feedback">Submit</button></li>';
 
-        $('#submit_button').replaceWith(submit_button);
-        $('#current_user').replaceWith(html);
-        $('#signup_button').replaceWith(logoutButtonHTML);
+        submit_button =
+          '<li id="submit_button">' +
+            '<button type="button" name="submit_feedback">' +
+              'Submit' +
+            '</button>' + 
+          '</li>';
+
+        submitButtonId.replaceWith(submit_button);
+        currentUserId.replaceWith(html);
+        signupButtonnId.replaceWith(logoutButtonHTML);
     }
 
 
