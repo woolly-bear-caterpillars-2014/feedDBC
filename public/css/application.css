@@ -66,17 +66,43 @@ h2 {
   margin: 20px auto;
 }
 
+input {
+
+}
+
+.row-submit input {
+  margin: 0 auto;
+  font-size: 18px;
+  padding: 10px;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+
+
+textarea {
+  margin: 0 auto;
+  width: 600px;
+  resize: none;
+  border: 1px solid #20272D;
+  padding: 15px;
+}
+
 .row-submit {
+  margin: 0 auto;
   position: fixed;
-  background-color: #eee;
+  background-color: #F6F6EF;
   padding: 20px 50px 20px 50px;
   left:0;
   right:0;
-  margin-left: 20%;
-  margin-right: 20%;
-  margin-top: 175px;
+  width: 300px;
+/*  margin-left: 20%;
+  margin-right: 20%;*/
+  margin-top: 125px;
   z-index: 2;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 nav button {
@@ -101,6 +127,29 @@ nav button:hover {
   border: 1px solid #20272D;
 }
 
-span {
+.row-submit button {
+  border: 1px solid rgba(0,0,0,0);
+  background-color: #02a9b9;
+  margin-top: 20px;
+  margin-bottom: 20px;
   color: #fff;
+  padding: 10px 110px 10px 110px;
+  font-size: 18px;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+
+
+.row-submit button:hover {
+  background-color: #F6F6EF;
+  color: #20272D;
+  border: 1px solid #20272D;
+}
+
+nav span {
+  color: #fff;
+  font-size: 32px;
 }

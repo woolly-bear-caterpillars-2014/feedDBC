@@ -116,12 +116,14 @@ $(document).ready(function() {
                 $(signup).effect("shake");
             }
         }).done(function(response) {
-            console.log(response.username);
-            html = "<li>" +response.username + "</li>";
+            html = '<li id="current_user">' +
+              '<button type="submit" name="profile">Welcome ' + response.username + '</button>' +
+            '</li>';
+
             logoutButtonHTML = '<li><form name="input" action="/logout" method="get">' +
-              '<button type="submit" name="logout">logout</button>' +
+              '<button type="submit" name="logout">Logout</button>' +
               '</form></li>';
-            submit_buton = '<li><a href="/posts/new"><button type="button">submit</button></a></li>';
+            submit_buton = '<li><a href="/posts/new"><button type="button">Submit</button></a></li>';
 
             $('#submit_buton').replaceWith(submit_buton);
             $('#current_user').replaceWith(html);
@@ -148,12 +150,14 @@ $(document).ready(function() {
                 $(login).effect("shake");
             }
         }).done(function(response) {
-            console.log(response.username);
-            html = "<li>" + response.username + "</li>";
+            html = '<li id="current_user">' +
+              '<button type="submit" name="profile">Welcome ' + response.username + '</button>' +
+            '</li>';
+
             logoutButtonHTML = '<li><form name="input" action="/logout" method="get">' +
-              '<button type="submit" name="logout">logout</button>' +
+              '<button type="submit" name="logout">Logout</button>' +
               '</form></li>';
-            submit_buton = '<li><a href="/posts/new"><button type="button">submit</button></a></li>';
+            submit_buton = '<li><a href="/posts/new"><button type="button">Submit</button></a></li>';
 
             $('#submit_buton').replaceWith(submit_buton);
             $('#current_user').replaceWith(html);
