@@ -2,7 +2,7 @@
 
   <% i = 0 %>
   <% @posts.each do |post| %>
-    <div id="element">
+    <a href="/posts/<%=post.id%>"><div id="element">
       <%= i += 1 %>.
       <form method="post" action="/posts/<%=post.id%>/votes" name="post-vote">
         <small>
@@ -19,6 +19,6 @@
           by <%= post.name_type %> |
           <%= post.comments.count %> comments
         </small>
-    </div>
+    </div></a>
   <% end %>
 </div>
