@@ -27,9 +27,10 @@
       <ul>
         <li><strong><a href="/">fee<span>DB</span>a<span>C</span>k</a></strong></li>
         <li>
-        <li><a href='/posts/new'>
-          <button type="button">Submit</button>
-        </a></li>
+
+        <li id="submit_button">
+          <button type="submit" name="submit_feedback">Submit</button>
+        </li>
 
         <div style="float:right; padding-right:20px">
 
@@ -50,8 +51,9 @@
       <ul>
         <li><strong><a href="/">fee<span>DB</span>a<span>C</span>k</a></strong></li>
         <li>
-        <li id="submit_buton">
-          <button type="button" name="login">Submit</button>
+
+        <li id="submit_button">
+          <button type="submit" name="login">Submit</button>
         </li>
 
         <div style="float:right; padding-right:20px">
@@ -98,7 +100,23 @@
       <br>
       <button type="submit" name="login_submit">Login</button>
     </form>
+
     <legend id="notUser"><h5>Not a user? <a href="#">Signup</a></h5></legend>
+  </div>
+
+
+  <!-- Hidden Submit -->
+  <div class="row-submit" id="submitFeedback" style="display: none;">
+    <form action="/posts" method="post" name="new_post">
+      <textarea name="post[text]" placeholder="tweet sized feedback!" rows="4" cols="50"></textarea>
+      <br>
+      <br>
+      <input type="checkbox" name="post[is_anonymous?]" value="<%= true %>">
+      post anonymously
+      <br>
+      <br>
+      <button id="feedback_submit" type="submit">Submit</button>
+    </form>
   </div>
 
   <%= yield %>

@@ -4,21 +4,20 @@ get '/posts' do
   erb :'posts/index'
 end
 
-get '/posts/new' do
-  @user = current_user
+# get '/posts/new' do
+#   @user = current_user
 
-  if current_user
-    erb :'posts/new'
-  else
-    redirect '/login'
-  end
-end
+#   if current_user
+#     erb :'posts/new'
+#   else
+#     redirect '/login'
+#   end
+# end
 
 post '/posts' do
   params[:post][:user_id] = current_user.id
-  Post.create(params[:post])
-
-  redirect '/posts'
+  post = Post.create(params[:post])
+  post.to_json
 end
 
 get '/posts/:post_id' do
