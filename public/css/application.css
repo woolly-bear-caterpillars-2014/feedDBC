@@ -9,15 +9,6 @@ body {
   height: 100%;
 }
 
-.merp {
-    width: 100px;
-    height: 300px;
-    background: #ccc;
-    position: absolute;
-/*    right: 20px;
-    top: 80px;*/
-    display: none;
-}
 
 .container-votes {
   margin: 0 auto;
@@ -101,7 +92,7 @@ input {
 
 textarea {
   margin: 0 auto;
-  width: 600px;
+  width: 280px;
   resize: none;
   border: 1px solid #20272D;
   padding: 15px;
@@ -115,8 +106,6 @@ textarea {
   left:0;
   right:0;
   width: 300px;
-/*  margin-left: 20%;
-  margin-right: 20%;*/
   margin-top: 125px;
   z-index: 2;
   border-radius: 4px;
@@ -162,13 +151,13 @@ nav button:hover {
   border: 1px solid #20272D;
 }
 
-/*.element button {
+#comment-form button {
   border: 1px solid rgba(0,0,0,0);
-  background-color: #20272D;
+  background-color: #02a9b9;
   margin-top: 20px;
   margin-bottom: 20px;
   color: #fff;
-  padding: 10px;
+  padding: 10px 110px 10px 110px;
   font-size: 18px;
   -o-transition:.5s;
   -ms-transition:.5s;
@@ -177,12 +166,14 @@ nav button:hover {
   transition:.5s;
 }
 
-
-.element button:hover {
+#comment-form button:hover {
   background-color: #F6F6EF;
   color: #20272D;
   border: 1px solid #20272D;
-}*/
+}
+
+
+
 
 .row-submit button {
   border: 1px solid rgba(0,0,0,0);
