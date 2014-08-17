@@ -136,6 +136,21 @@ function submitButtonToggle() {
     $(submit).fadeIn('fast');  
 }
 
+function injectHtmlOnLogin(response) {
+    html = '<li id="current_user">' +
+      '<button type="submit" name="profile">Welcome ' + response.username + '</button>' +
+    '</li>';
+
+    logoutButtonHTML = '<li><form name="input" action="/logout" method="get">' +
+      '<button type="submit" name="logout">Logout</button>' +
+      '</form></li>';
+    submit_button = '<li id="submit_button"><button type="button" name="submit_feedback">Submit</button></li>';
+
+    $('#submit_button').replaceWith(submit_button);
+    $('#current_user').replaceWith(html);
+    $('#signup_button').replaceWith(logoutButtonHTML);
+}
+
 
 function submitLogin() {
     var buttonLogin = $('button[name=login]'),
@@ -156,19 +171,7 @@ function submitLogin() {
             $(login).effect("shake");
         }
     }).done(function(response) {
-        html = '<li id="current_user">' +
-          '<button type="submit" name="profile">Welcome ' + response.username + '</button>' +
-        '</li>';
-
-        logoutButtonHTML = '<li><form name="input" action="/logout" method="get">' +
-          '<button type="submit" name="logout">Logout</button>' +
-          '</form></li>';
-        submit_button = '<li id="submit_button"><button type="submit" name="submit_feedback">Submit</button></li>';
-
-
-        $('#submit_button').replaceWith(submit_button);
-        $('#current_user').replaceWith(html);
-        $('#signup_button').replaceWith(logoutButtonHTML);
+        injectHtmlOnLogin(response);
     })
 }
 
@@ -192,18 +195,7 @@ function submitSignup() {
             $(signup).effect("shake");
         }
     }).done(function(response) {
-        html = '<li id="current_user">' +
-          '<button type="submit" name="profile">Welcome ' + response.username + '</button>' +
-        '</li>';
-
-        logoutButtonHTML = '<li><form name="input" action="/logout" method="get">' +
-          '<button type="submit" name="logout">Logout</button>' +
-          '</form></li>';
-        submit_button = '<li id="submit_button"><button type="button" name="submit_feedback">Submit</button></li>';
-
-        $('#submit_button').replaceWith(submit_button);
-        $('#current_user').replaceWith(html);
-        $('#signup_button').replaceWith(logoutButtonHTML);
+        injectHtmlOnLogin(response);
     })
 }
 
@@ -230,7 +222,6 @@ function submitFeedback() {
         console.log(response);
     })
 }
-
 
 
 
