@@ -111,10 +111,13 @@ $(document).ready(function() {
                 $('.container').css(
                     {"opacity": "1", "pointer-events": "auto"}
                 );
+            },
+            error: function(xhr, status, error) {
+                $(signup).effect("shake");
             }
         }).done(function(response) {
             console.log(response.username);
-            html = response.username;
+            html = "<li>" +response.username + "</li>";
             logoutButtonHTML = '<li><form name="input" action="/logout" method="get">' +
               '<button type="submit" name="logout">logout</button>' +
               '</form></li>';
@@ -140,6 +143,9 @@ $(document).ready(function() {
                 $('.container').css(
                     {"opacity": "1", "pointer-events": "auto"}
                 );
+            },
+            error: function(xhr, status, error) {
+                $(login).effect("shake");
             }
         }).done(function(response) {
             console.log(response.username);
