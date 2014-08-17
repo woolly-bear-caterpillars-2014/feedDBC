@@ -2,24 +2,23 @@
 
   <% i = 0 %>
   <% @posts.each do |post| %>
-    <%= i += 1 %>.
-    <form method="post" action="/posts/<%=post.id%>/votes" name="post-vote">
-      <small>
-        <button type="submit" name="vote" value="1">&#9650;</button>
-      </small>
-      <small>
-        <button type="submit" name="vote" value="-1">&#9660;</button>
-      </small>
-    </form>
-    <span class><a href="/posts/<%= post.id %>"><%= post.text %></a></span>
-    <br>
-      <small>
-        <span id="post-<%=post.id%>-vote-sum"><%= post.vote_sum %></span> points
-        by <%= post.name_type %> |
-        <%= post.comments.count %> comments
-      </small>
-    <br>
-    <br>
-    <br>
+    <div id="element">
+      <%= i += 1 %>.
+      <form method="post" action="/posts/<%=post.id%>/votes" name="post-vote">
+        <small>
+          <button type="submit" name="vote" value="1">&#9650;</button>
+        </small>
+        <small>
+          <button type="submit" name="vote" value="-1">&#9660;</button>
+        </small>
+      </form>
+      <span class><%= post.text %></span>
+      <br>
+        <small>
+          <span id="post-<%=post.id%>-vote-sum"><%= post.vote_sum %></span> points
+          by <%= post.name_type %> |
+          <%= post.comments.count %> comments
+        </small>
+    </div>
   <% end %>
 </div>

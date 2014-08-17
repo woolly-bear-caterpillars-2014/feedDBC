@@ -7,6 +7,13 @@ body {
   margin-top: 100px;
   width: 789px;
   height: 100%;
+}
+
+.container-votes {
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 789px;
+  height: 100%;
   padding: 20px 20px 20px 20px;
   background-color: #F6F6EF;
   -webkit-box-shadow: 0 0 11px 1px #111;
@@ -105,6 +112,10 @@ textarea {
   border-radius: 4px;
 }
 
+input:focus, textarea:focus, button:focus{
+  outline: none;
+}
+
 nav button {
   border: 1px solid rgba(0,0,0,0);
   background-color: #20272D;
@@ -120,12 +131,48 @@ nav button {
   transition:.5s;
 }
 
+#element {
+  background-color: #ccc;
+  padding: 30px;
+  margin-bottom: 10px;
+  background-color: #F6F6EF;
+  -webkit-box-shadow: 0 0 11px 1px #111;
+}
+
+#element:hover{
+  background-color: #ccc;
+  padding: 30px;
+  margin-bottom: 10px;
+}
+
 
 nav button:hover {
   background-color: #F6F6EF;
   color: #20272D;
   border: 1px solid #20272D;
 }
+
+/*.element button {
+  border: 1px solid rgba(0,0,0,0);
+  background-color: #20272D;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #fff;
+  padding: 10px;
+  font-size: 18px;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+
+
+.element button:hover {
+  background-color: #F6F6EF;
+  color: #20272D;
+  border: 1px solid #20272D;
+}*/
 
 .row-submit button {
   border: 1px solid rgba(0,0,0,0);
