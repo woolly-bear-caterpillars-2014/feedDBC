@@ -2,7 +2,7 @@
 
   <% i = 0 %>
   <% @posts.each do |post| %>
-    <a href="/posts/<%=post.id%>"><div id="element">
+    <a href="/posts/<%=post.id%>"><div class="element">
       <%= i += 1 %>.
       <form method="post" action="/posts/<%=post.id%>/votes" name="post-vote">
         <small>
