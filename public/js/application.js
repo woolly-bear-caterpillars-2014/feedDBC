@@ -80,13 +80,12 @@ $(document).ready(function() {
     function addComments () {
         event.preventDefault();
         action = $(this).attr('action');
-        console.log(action);
+
         $.ajax(action, {
             method: 'post',
             data: $(this).serialize(),
             dataType: 'json'
        }).done(function(response) {
-            console.log(response);
             $('form[name=add_comment] textarea').val('');
             $('form[name=add_comment] input[type="checkbox"]').attr('checked', false);
 
@@ -233,8 +232,29 @@ $(document).ready(function() {
             error: function(xhr, status, error) {
                 submit.effect("shake");
             }
-        }).done(function(response) {
-            console.log(response);
+        }).done(function(post) {
+            console.log(post);
+
+            var html =
+            '<a href="/posts/' + post.id + '"><div class="element">' +
+              '<form method="post" action="/posts/' + post.id + '/votes" name="post-vote">' +
+                '<small>' +
+                  '<button type="submit" name="vote" value="1">&#9650;</button>' +
+                '</small>' +
+                '<small>' +
+                  '<button type="submit" name="vote" value="-1">&#9660;</button>' +
+                '</small>' +
+              '</form>' +
+              '<span class>' + post.text + '</span>' +
+              '<br>' +
+                '<small>' +
+                  '<span id="post-' + post.id + '-vote-sum">' + post.vote_sum + '</span> points' +
+                  'by' + post.name_type + ' | ' +
+                  '0' + ' comments' +
+                '</small>' +
+              '</div></a>';
+
+            $(".feedback-list").append(html);
         })
     }
 });
