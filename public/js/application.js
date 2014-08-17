@@ -42,20 +42,57 @@ $(document).ready(function() {
 
         buttonLogin = $('button[name=login]'),
         buttonLoginForm = $('form[name=login]'),
-        login = $('#loginStudent');
+        login = $('#loginStudent'),
 
-    // login/signup button toggle
+        container = $('#container');
+
+
+    // enable mouse clicks outside of login id to go back to
+    // normal page
+    $(login).mouseup(function(){ return false; });
+    $(document).on("mouseup", function() {
+        $(login).fadeOut('fast');
+        $('body').css({"background-color":"#20272D"});
+        $('.container').css(
+            {"opacity": "1", "pointer-events": "auto"}
+        );
+    });
+
+
+    // enable mouse clicks outside of signup id to go back to
+    // normal page
+    $(signup).mouseup(function(){ return false; });
+    $(document).on("mouseup", function() {
+        $(signup).fadeOut('fast');
+        $('body').css({"background-color":"#20272D"});
+        $('.container').css(
+            {"opacity": "1", "pointer-events": "auto"}
+        );
+    });
+
+
+    // unhide signup button, hide login button
     $(buttonSignup).on('click', function(event) {
-        event.preventDefault();
+        $('body').css({"background-color":"black"});
+        $('.container').css(
+            {"opacity": "0.5", "pointer-events": "none"}
+        );
         $(login).fadeOut('fast');
         $(signup).fadeIn('fast');
     });
 
+
+    // unhide login button, hide signup button
     $(buttonLogin).on('click', function(event) {
-        event.preventDefault();
+        $('body').css({"background-color":"black"});
+        $('.container').css(
+            {"opacity": "0.5", "pointer-events": "none"}
+        );
         $(signup).fadeOut('fast');
         $(login).fadeIn('fast');
     });
+
+
 
     // signup ajax
     $(buttonSignupForm).on('submit', function(event) {
@@ -70,14 +107,20 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(data) {
                 $(signup).fadeOut('fast');
+                $('body').css({"background-color":"#20272D"});
+                $('.container').css(
+                    {"opacity": "1", "pointer-events": "auto"}
+                );
             }
         }).done(function(response) {
             console.log(response.username);
             html = response.username;
-            logoutButtonHTML = '<form name="input" action="/logout" method="get">' +
+            logoutButtonHTML = '<li><form name="input" action="/logout" method="get">' +
               '<button type="submit" name="logout">logout</button>' +
-              '</form>';
+              '</form></li>';
+            submit_buton = "<li><a href='/posts/new'>submit</a></li>";
 
+            $('#submit_buton').replaceWith(submit_buton);
             $('#current_user').replaceWith(html);
             $('#signup_button').replaceWith(logoutButtonHTML);
         })
@@ -93,6 +136,10 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(data) {
                 $(login).fadeOut('fast');
+                $('body').css({"background-color":"#20272D"});
+                $('.container').css(
+                    {"opacity": "1", "pointer-events": "auto"}
+                );
             }
         }).done(function(response) {
             console.log(response.username);
@@ -100,7 +147,9 @@ $(document).ready(function() {
             logoutButtonHTML = '<li><form name="input" action="/logout" method="get">' +
               '<button type="submit" name="logout">logout</button>' +
               '</form></li>';
+            submit_buton = "<li><a href='/posts/new'>submit</a></li>";
 
+            $('#submit_buton').replaceWith(submit_buton);
             $('#current_user').replaceWith(html);
             $('#signup_button').replaceWith(logoutButtonHTML);
         })
