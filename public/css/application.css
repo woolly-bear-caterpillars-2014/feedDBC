@@ -1,9 +1,10 @@
 body {
-  background-color:#20272D
+  background-color: #20272D;
 }
 
 .container {
   margin: 0 auto;
+  margin-top: 100px;
   width: 789px;
   height: 100%;
   padding: 20px 20px 20px 20px;
@@ -22,14 +23,15 @@ li {
   padding-left: 20px;
 }
 
+
 nav {
+  margin-top: -100px;
   background-color: #02a9b9;
   width: 100%;
-  font-size: 15px;
-  height: 50px;
-  position: relative;
+  font-size: 22px;
+  position: fixed;
   -webkit-box-shadow: 0 0 11px 1px #111;
-  line-height: 50px;
+  z-index: 2;
 }
 
 button {
@@ -65,14 +67,40 @@ h2 {
 }
 
 .row-submit {
-    background-color: #eee;
-    padding: 20px 50px 20px 50px;
-    left:0;
-    right:0;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 175px;
-    position: absolute;
-    z-index: 100;
-    border-radius: 2px;
+  position: fixed;
+  background-color: #eee;
+  padding: 20px 50px 20px 50px;
+  left:0;
+  right:0;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 175px;
+  z-index: 2;
+  border-radius: 2px;
+}
+
+nav button {
+  border: 1px solid rgba(0,0,0,0);
+  background-color: #20272D;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #fff;
+  padding: 10px;
+  font-size: 18px;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+
+
+nav button:hover {
+  background-color: #F6F6EF;
+  color: #20272D;
+  border: 1px solid #20272D;
+}
+
+span {
+  color: #fff;
 }

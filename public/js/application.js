@@ -121,7 +121,7 @@ $(document).ready(function() {
             logoutButtonHTML = '<li><form name="input" action="/logout" method="get">' +
               '<button type="submit" name="logout">logout</button>' +
               '</form></li>';
-            submit_buton = "<li><a href='/posts/new'>submit</a></li>";
+            submit_buton = '<li><a href="/posts/new"><button type="button">submit</button></a></li>';
 
             $('#submit_buton').replaceWith(submit_buton);
             $('#current_user').replaceWith(html);
@@ -153,14 +153,12 @@ $(document).ready(function() {
             logoutButtonHTML = '<li><form name="input" action="/logout" method="get">' +
               '<button type="submit" name="logout">logout</button>' +
               '</form></li>';
-            submit_buton = "<li><a href='/posts/new'>submit</a></li>";
+            submit_buton = '<li><a href="/posts/new"><button type="button">submit</button></a></li>';
 
             $('#submit_buton').replaceWith(submit_buton);
             $('#current_user').replaceWith(html);
             $('#signup_button').replaceWith(logoutButtonHTML);
         })
-
-
     });
 });
 
