@@ -21,7 +21,7 @@ $(document).ready(function() {
         signupButtonnId = $('#signup_button');
 
 
-    buttonVote.on('click', updateVotes);
+    $('body').on('click', 'button[name=vote]', updateVotes);
     addCommentForm.on('submit', addComments);
 
 
@@ -234,12 +234,14 @@ $(document).ready(function() {
             error: function(xhr, status, error) {
                 submit.effect("shake");
             }
-        }).done(function(post) {
-            console.log(post);
+        }).done(function(response) {
+            console.log(response);
+            number = parseInt($("span.counter:last").text()) + 1;
 
             var html =
-            '<a href="/posts/' + post.id + '"><div class="element">' +
-              '<form method="post" action="/posts/' + post.id + '/votes" name="post-vote">' +
+            '<a href="/posts/' + response.post.id + '"><div class="element">' +
+              '<span class="counter">' + number + '</span>. ' +
+              '<form method="post" action="/posts/' + response.post.id + '/votes" name="post-vote">' +
                 '<small>' +
                   '<button type="submit" name="vote" value="1">&#9650;</button>' +
                 '</small>' +
@@ -247,16 +249,17 @@ $(document).ready(function() {
                   '<button type="submit" name="vote" value="-1">&#9660;</button>' +
                 '</small>' +
               '</form>' +
-              '<span class>' + post.text + '</span>' +
+              '<span class>' + response.post.text + '</span>' +
               '<br>' +
                 '<small>' +
-                  '<span id="post-' + post.id + '-vote-sum">' + post.vote_sum + '</span> points' +
-                  'by' + post.name_type + ' | ' +
+                  '<span id="post-' + response.post.id + '-vote-sum">' + response.post.vote_sum + '</span> points ' +
+                  'by ' + response.user + ' | ' +
                   '0' + ' comments' +
                 '</small>' +
               '</div></a>';
 
             $(".feedback-list").append(html);
+            $("html,body").animate({scrollTop:$(document).height()}, 1000);
         })
     }
 });
