@@ -4,7 +4,7 @@
   <div class="feedback-list">
     <% @posts.each do |post| %>
       <a href="/posts/<%=post.id%>"><div class="element">
-        <%= i += 1 %>.
+        <span class="counter"><%= i += 1 %></span>.
         <form method="post" action="/posts/<%=post.id%>/votes" name="post-vote">
           <small>
             <button type="submit" name="vote" value="1">&#9650;</button>
