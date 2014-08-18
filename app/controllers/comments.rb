@@ -3,8 +3,8 @@ post "/posts/:post_id/comments" do
     comments_hash = params[:comment].merge(user_id: session[:user_id], post_id: params[:post_id])
     comment = Comment.create(comments_hash)
     comment_return = {}
-    comment.is_anonymous? ? user = 'Anonymous' : user = current_user.username
-    comment_return = {comment: comment.text, user: user}
+    user = comment.is_anonymous? ? 'Anonymous' : current_user.username
+    comment_return = {comment: comment.text, user: user, post_id: params[:post_id], count: Post.find(params[:post_id]).comments.count}
     if comment
       return comment_return.to_json
     else

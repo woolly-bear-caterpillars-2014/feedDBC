@@ -7,7 +7,6 @@ post "/posts/:post_id/votes" do
       vote_sum = post.vote_sum += params[:vote].to_i
       post.update(vote_sum: vote_sum)
       return vote.to_json
-
     else 
       return ''
     end

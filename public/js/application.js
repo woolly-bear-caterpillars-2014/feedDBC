@@ -76,7 +76,6 @@ $(document).ready(function() {
         })
     }
 
-
     function addComments () {
         event.preventDefault();
         action = $(this).attr('action');
@@ -98,6 +97,9 @@ $(document).ready(function() {
                 '</div><br>';
 
             $(".comment-list").append(html);
+
+            span = $("span#post-" + response.post_id + "-comments-count");
+            span.text(response.count);
         })
     }
 
