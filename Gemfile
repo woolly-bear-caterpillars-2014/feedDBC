@@ -19,14 +19,14 @@ gem 'rake'
 
 gem 'shotgun'
 
-group :test do
+# group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
   gem 'rspec'
   gem 'capybara'
-end
+# end
 
-group :test, :development do
+# group :test, :development do
   gem 'factory_girl'
   gem 'faker'
-end
+# end
