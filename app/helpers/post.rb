@@ -6,7 +6,6 @@ helpers do
 
   def voted?(post, vote_direction)
     vote = Vote.find_by(user_id: session[:user_id], post_id: post)
-    p vote_direction == vote.value
     if vote && vote.value == vote_direction
       p "TRUE"
       return "class='active'"

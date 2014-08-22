@@ -62,16 +62,21 @@ $(document).ready(function() {
     function updateVotes() {
         event.preventDefault();
         vote = Number($(this).val());
-        action = $(this).parent().parent('form[name=post-vote]').attr('action');
+        action = $(this).parent('form[name=post-vote]').attr('action');
 
         $.ajax(action, {
             method: 'post',
             data: {vote: vote},
             dataType: 'json'
         }).done(function(response) {
+            console.log(response)
             if (response.post_id) {
                 span = $("span#post-" + response.post_id + "-vote-sum");
                 span.text(Number(span.text()) + vote);
+                //Update active class
+                var button = $('form[action="/posts/' + response.post_id + '/votes"]').find('button[value="' + response.value + '"]');
+                button.addClass('active');
+                button.siblings().removeClass("active")
             }
         })
     }
