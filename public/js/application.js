@@ -164,9 +164,9 @@ $(document).ready(function() {
     function injectHtmlOnLogin(response) {
         html =
           '<li id="current_user">' +
-            '<button type="submit" name="profile">' +
+            '<a href="/users/' + response.id + '"><button type="submit" name="profile">' +
               'Welcome ' + response.username +
-            '</button>' +
+            '</button></a>' +
           '</li>';
 
         logoutButtonHTML =
@@ -225,7 +225,6 @@ $(document).ready(function() {
             injectHtmlOnLogin(response);
         })
     }
-
 
     function submitFeedback() {
         event.preventDefault();

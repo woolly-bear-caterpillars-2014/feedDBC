@@ -31,7 +31,8 @@ post "/signup" do
 end
 
 get "/users/:user_id" do
-  user = User.find(session[:user_id])
+  @user = User.find(session[:user_id])
+  erb :"users/show"
 end
 
 put "/users/:user_id" do

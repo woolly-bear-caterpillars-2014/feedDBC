@@ -17,6 +17,5 @@ end
 
 get '/posts/:post_id' do
   @post = Post.find(params[:post_id])
-
   erb :'posts/show'
 end

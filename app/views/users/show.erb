@@ -1,3 +1,47 @@
 <div id="container" class="container">
-
+  <div class="feedback-list">
+    <h2>Posts</h2>
+    <% @i = 0 %>
+    <% @user.posts.each do |post| %>
+      <% @post = post %>
+      <%= erb :'/partials/_post' %>
+    <% end %>
+  </div>
+  <% if @user.comments %>
+    <h2>Comments</h2>
+    <div class="comments-list">
+      <% @user.comments.each do |comment| %>
+        <div class="comment-item">
+          <%= comment.text %>
+          <small>
+            <div class="belongs_to_post">
+              belongs to post:
+              <a href="/posts/<%= @post.id %>"><%= comment.post.text %></a>
+            </div>
+          </small>
+        </div>
+        <br>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="feedback-list">
+    <h2>Votes Up</h2>
+    <% @i = 0 %>
+    <% @user.votes.each do |vote| %>
+      <% if vote.value == 1 %>
+        <% @post = vote.post %>
+        <%= erb :'/partials/_post' %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="feedback-list">
+    <h2>Votes Down</h2>
+    <% @i = 0 %>
+    <% @user.votes.each do |vote| %>
+      <% if vote.value == -1 %>
+        <% @post = vote.post %>
+        <%= erb :'/partials/_post' %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

@@ -35,7 +35,7 @@
         <div style="float:right; padding-right:20px">
 
           <li id="current_user">
-            <button type="submit" name="profile">Welcome <%= current_user.username %></button>
+            <a href="/users/<%= current_user.id %>"> <button type="submit" name="profile">Welcome <%= current_user.username %></button></a>
           </li>
 
           <li id="signup_button">
@@ -125,8 +125,6 @@
 
     <form name="editUser" action="/edituser" method="post">
       <input type="hidden" name="_method" value="put">
-      <input type="text" name="user[username]" placeholder="username"/><br>
-      <br>
       <input type="text" name="user[email]" placeholder="email"/><br>
       <br>
       <input type="password" name="user[password]" placeholder="password"/><br>
@@ -135,7 +133,6 @@
       <br>
       <button type="submit" name="signup_submit">Sign Up</button>
     </form>
-    <!--<legend id="alreadyUser"><h5>Already a user? <a href="#" name="login">Login</a></h5></legend>-->
   </div>
 
   <%= yield %>
