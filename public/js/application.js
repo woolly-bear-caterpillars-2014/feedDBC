@@ -64,16 +64,21 @@ $(document).ready(function() {
     function updateVotes() {
         event.preventDefault();
         vote = Number($(this).val());
-        action = $(this).parent().parent('form[name=post-vote]').attr('action');
+        action = $(this).parent('form[name=post-vote]').attr('action');
 
         $.ajax(action, {
             method: 'post',
             data: {vote: vote},
             dataType: 'json'
         }).done(function(response) {
+            console.log(response)
             if (response.post_id) {
                 span = $("span#post-" + response.post_id + "-vote-sum");
                 span.text(Number(span.text()) + vote);
+                //Update active class
+                var button = $('form[action="/posts/' + response.post_id + '/votes"]').find('button[value="' + response.value + '"]');
+                button.addClass('active');
+                button.siblings().removeClass("active")
             }
         })
     }
@@ -228,7 +233,7 @@ $(document).ready(function() {
         $.ajax($(this).attr('action'), {
             method: $(this).attr('method'),
             data: $(this).serialize(),
-            dataType: 'json',
+            dataType: 'html',
             success: function(data) {
                 submit.fadeOut('fast');
                 backgroundFadeOut();
@@ -237,61 +242,20 @@ $(document).ready(function() {
                 submit.effect("shake");
             }
         }).done(function(response) {
-            console.log(response);
             number = parseInt($("span.counter:last").text()) + 1;
-
-            var html =
-            '<a href="/posts/' + response.post.id + '"><div class="element">' +
-              '<span class="counter">' + number + '</span>. ' +
-              '<form method="post" action="/posts/' + response.post.id + '/votes" name="post-vote">' +
-                '<small>' +
-                  '<button type="submit" name="vote" value="1">&#9650;</button>' +
-                '</small>' +
-                '<small>' +
-                  '<button type="submit" name="vote" value="-1">&#9660;</button>' +
-                '</small>' +
-              '</form>' +
-              '<span class>' + response.post.text + '</span>' +
-              '<br>' +
-                '<small>' +
-                  '<span id="post-' + response.post.id + '-vote-sum">' + response.post.vote_sum + '</span> points ' +
-                  'by ' + response.user + ' | ' +
-                  '0' + ' comments' +
-                '</small>' +
-              '</div></a>';
-
-            $(".feedback-list").append(html);
-            $("html,body").animate({scrollTop:$(document).height()}, 1000);
+            $(".feedback-list").append(response);
+            $("span.counter:last").text(number)
+            $("html, body").animate({ scrollTop:$(document).height() }, 1000);
         })
     }
 
-
-
-    function signupButtonToggle() {
-        backgroundFadeIn();
-
-        signup.fadeIn('fast');
-        login.fadeOut('fast');
-    }
-
-    function submitSignup() {
-        event.preventDefault();
-
-        $.ajax($(this).attr('action'), {
-            method: $(this).attr('method'),
-            data: $(this).serialize(),
-            dataType: 'json',
-            success: function(data) {
-                signup.fadeOut('fast');
-                backgroundFadeOut();
-            },
-            error: function(xhr, status, error) {
-                signup.effect("shake");
-            }
-        }).done(function(response) {
-            injectHtmlOnLogin(response);
-        })
-    }
+    /* Accordion */
+    $('.feedback-list').on('click', '.feedback-header', function() {
+        if (event.target.nodeName != 'BUTTON') {
+            $(this).next().slideToggle('fast');
+            $(".feedback-comments").not($(this).next()).slideUp('fast');
+        }
+    })
 
 });
 
