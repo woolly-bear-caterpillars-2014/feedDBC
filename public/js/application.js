@@ -69,14 +69,13 @@ $(document).ready(function() {
             data: {vote: vote},
             dataType: 'json'
         }).done(function(response) {
-            console.log(response)
             if (response.post_id) {
                 span = $("span#post-" + response.post_id + "-vote-sum");
                 span.text(Number(span.text()) + vote);
                 //Update active class
+                $('form[action="/posts/' + response.post_id + '/votes"]').find('button').removeClass("active")
                 var button = $('form[action="/posts/' + response.post_id + '/votes"]').find('button[value="' + response.value + '"]');
                 button.addClass('active');
-                button.siblings().removeClass("active")
             }
         })
     }

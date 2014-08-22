@@ -93,6 +93,12 @@ input {
   transition:.5s;
 }
 
+.feedback-voting {
+  background-color: #20272D;
+  float: left;
+  color: #F6F6EF;
+}
+
 
 textarea {
   margin: 0 auto;
@@ -135,13 +141,36 @@ nav button {
 }
 
 .feedback-item {
+  position:relative;
+}
+
+.feedback-voting {
+  position:absolute;
+/*  background-color: #F6F6EF;*/
+  font-size: 18px;
+  padding: 7px;
+}
+
+.feedback-voting button {
+  padding: 7px;
+/*  line-height: px;
+/*  -webkit-box-shadow: 0 0 11px 1px #111;*/
+/*  font-size: 20px;
+  width: 40px;
+  padding: 5px 5px 5px;
+  margin: 5px;*/
+/*  background-color: #F6F6EF;*/
+}
+
+.feedback-inner {
   background-color: #ccc;
   margin-bottom: 10px;
   background-color: #F6F6EF;
   -webkit-box-shadow: 0 0 11px 1px #111;
+  margin-left: 60px;
 }
 
-.feedback-item:hover{
+.feedback-inner:hover{
   background-color: #ccc;
   margin-bottom: 10px;
 }
