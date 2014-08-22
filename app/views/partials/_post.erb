@@ -4,10 +4,10 @@
       <span class="counter"><%= @i += 1 if @i %></span>.
       <form method="post" action="/posts/<%=@post.id%>/votes" name="post-vote">
         <small>
-          <button type="submit" name="vote" value="1">&#9650;</button>
+          <button type="submit" name="vote" value="1" <% voted?(@post.id, 1) %>>&#9650;</button>
         </small>
         <small>
-          <button type="submit" name="vote" value="-1">&#9660;</button>
+          <button type="submit" name="vote" value="-1" <% voted?(@post.id, -1) %>>&#9660;</button>
         </small>
       </form>
       <span class><%= @post.text %></span>
