@@ -130,7 +130,7 @@ nav button {
   transition:.5s;
 }
 
-.element {
+.feedback-item {
   background-color: #ccc;
   padding: 30px;
   margin-bottom: 10px;
@@ -138,12 +138,20 @@ nav button {
   -webkit-box-shadow: 0 0 11px 1px #111;
 }
 
-.element:hover{
+.feedback-item:hover{
   background-color: #ccc;
   padding: 30px;
   margin-bottom: 10px;
 }
 
+.feedback-header {
+  cursor:pointer;
+}
+
+.feedback-comments {
+  display:none;
+  margin-top:30px;
+}
 
 nav button:hover {
   background-color: #F6F6EF;
@@ -201,3 +209,5 @@ nav span {
   color: #fff;
   font-size: 32px;
 }
+
+
