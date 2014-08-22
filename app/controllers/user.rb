@@ -29,3 +29,13 @@ post "/signup" do
     erb :"post/index"
   end
 end
+
+get "/users/:user_id" do
+  user = User.find(session[:user_id])
+end
+
+put "/users/:user_id" do
+  user = User.find(session[:user_id])
+  user.update(params[:user])
+  user.update(is_admin?: true) if params[:admin_passcode] == "caramelizedplantaincupcake"
+end

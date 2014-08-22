@@ -20,6 +20,8 @@ $(document).ready(function() {
         currentUserId = $('#current_user'),
         signupButtonnId = $('#signup_button');
 
+        buttonEditProfile = $('button[name=profile]'),
+
 
     $('body').on('click', 'button[name=vote]', updateVotes);
     addCommentForm.on('submit', addComments);
@@ -155,7 +157,7 @@ $(document).ready(function() {
     }
 
     function injectHtmlOnLogin(response) {
-        html = 
+        html =
           '<li id="current_user">' +
             '<button type="submit" name="profile">' +
               'Welcome ' + response.username +
@@ -171,7 +173,7 @@ $(document).ready(function() {
           '<li id="submit_button">' +
             '<button type="button" name="submit_feedback">' +
               'Submit' +
-            '</button>' + 
+            '</button>' +
           '</li>';
 
         submitButtonId.replaceWith(submit_button);
@@ -262,6 +264,35 @@ $(document).ready(function() {
             $("html,body").animate({scrollTop:$(document).height()}, 1000);
         })
     }
+
+
+
+    function signupButtonToggle() {
+        backgroundFadeIn();
+
+        signup.fadeIn('fast');
+        login.fadeOut('fast');
+    }
+
+    function submitSignup() {
+        event.preventDefault();
+
+        $.ajax($(this).attr('action'), {
+            method: $(this).attr('method'),
+            data: $(this).serialize(),
+            dataType: 'json',
+            success: function(data) {
+                signup.fadeOut('fast');
+                backgroundFadeOut();
+            },
+            error: function(xhr, status, error) {
+                signup.effect("shake");
+            }
+        }).done(function(response) {
+            injectHtmlOnLogin(response);
+        })
+    }
+
 });
 
 

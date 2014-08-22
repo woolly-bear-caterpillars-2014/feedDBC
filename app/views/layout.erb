@@ -45,7 +45,7 @@
           </li>
 
         </div>
-        
+
       </ul>
     <% else %>
       <ul>
@@ -117,6 +117,25 @@
       <br>
       <button id="feedback_submit" type="submit">Submit</button>
     </form>
+  </div>
+
+  <!-- Hidden Edit User -->
+  <div class="row-submit" id="editUser" style="display: none;">
+    <h3>Edit User</h3>
+
+    <form name="editUser" action="/edituser" method="post">
+      <input type="hidden" name="_method" value="put">
+      <input type="text" name="user[username]" placeholder="username"/><br>
+      <br>
+      <input type="text" name="user[email]" placeholder="email"/><br>
+      <br>
+      <input type="password" name="user[password]" placeholder="password"/><br>
+      <br>
+      <input type="text" name="admin_passcode" placeholder="admin access code"/><br>
+      <br>
+      <button type="submit" name="signup_submit">Sign Up</button>
+    </form>
+    <!--<legend id="alreadyUser"><h5>Already a user? <a href="#" name="login">Login</a></h5></legend>-->
   </div>
 
   <%= yield %>

@@ -1,5 +1,6 @@
 get '/posts' do
   @posts = Post.order("vote_sum desc")
+  @user = User.find(session[:user_id])
 
   erb :'posts/index'
 end
