@@ -1,0 +1,25 @@
+<div id="comment-form">
+  <form name="add_comment" action="/posts/<%=@post.id%>/comments" method="post">
+    <textarea name="comment[text]" placeholder="tweet sized comment!" rows="4" cols="50"></textarea><br>
+    <input type="checkbox" value="true" name ="comment[is_anonymous?]"> post anonymously<br>
+    <br>
+    <button id="add" type="submit" value="add">add</button>
+  </form>
+</div>
+<br>
+<% if @post.comments %>
+  <div class="comment-list">
+    <% @post.comments.each do |comment| %>
+      <div class="comment">
+        <%= comment.text %>
+        <small>
+          <div class="author">
+            posted by:
+            <%= comment.is_anonymous? ? 'Anonymous' : comment.user.username %>
+          </div>
+        </small>
+      </div>
+      <br>
+    <% end %>
+  </div>
+<% end %>

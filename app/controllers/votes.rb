@@ -2,7 +2,8 @@ post "/posts/:post_id/votes" do
   if current_user
     vote = Vote.where(user_id: session[:user_id], post_id: params[:post_id]).first_or_create()
     if params[:vote].to_i != vote.value
-      ((-params[:vote].to_i == vote.value) && vote.value != 0) ? vote.update(value: 0) : vote.update(value: params[:vote].to_i)
+      # ((-params[:vote].to_i == vote.value) && vote.value != 0) ? vote.update(value: 0) : vote.update(value: params[:vote].to_i)
+      vote.update(value: params[:vote].to_i)
       p vote
       post = Post.find(params[:post_id])
       vote_sum = post.vote_sum += params[:vote].to_i
