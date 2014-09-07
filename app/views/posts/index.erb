@@ -1,26 +1,10 @@
 <div id="container" class="container">
 
-  <% i = 0 %>
+  <% @i = 0 %>
   <div class="feedback-list">
     <% @posts.each do |post| %>
-      <a href="/posts/<%=post.id%>"><div class="element">
-        <span class="counter"><%= i += 1 %></span>.
-        <form method="post" action="/posts/<%=post.id%>/votes" name="post-vote">
-          <small>
-            <button type="submit" name="vote" value="1">&#9650;</button>
-          </small>
-          <small>
-            <button type="submit" name="vote" value="-1">&#9660;</button>
-          </small>
-        </form>
-        <span class><%= post.text %></span>
-        <br>
-          <small>
-            <span id="post-<%=post.id%>-vote-sum"><%= post.vote_sum %></span> points
-            by <%= post.name_type %> |
-            <%= post.comments.count %> comments
-          </small>
-      </div></a>
+    <% @post = post %>
+      <%= erb :'/partials/_post' %>
     <% end %>
   </div>
 </div>

@@ -49,6 +49,10 @@ button {
   cursor: pointer;
 }
 
+button.active {
+  color:#02a9b9;
+}
+
 a:link {
   color: #111111;
   text-decoration: none;
@@ -130,20 +134,27 @@ nav button {
   transition:.5s;
 }
 
-.element {
+.feedback-item {
   background-color: #ccc;
-  padding: 30px;
   margin-bottom: 10px;
   background-color: #F6F6EF;
   -webkit-box-shadow: 0 0 11px 1px #111;
 }
 
-.element:hover{
+.feedback-item:hover{
   background-color: #ccc;
-  padding: 30px;
   margin-bottom: 10px;
 }
 
+.feedback-header {
+  cursor:pointer;
+  padding: 30px;
+}
+
+.feedback-comments {
+  display:none;
+  padding: 0 30px 30px;
+}
 
 nav button:hover {
   background-color: #F6F6EF;
@@ -201,3 +212,5 @@ nav span {
   color: #fff;
   font-size: 32px;
 }
+
+

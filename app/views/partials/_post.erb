@@ -1,0 +1,21 @@
+<div class="feedback-item">
+  <div class="feedback-header">
+    <div class="element">
+      <span class="counter"><%= @i += 1 if @i %></span>.
+      <form method="post" action="/posts/<%=@post.id%>/votes" name="post-vote">
+        <button type="submit" name="vote" value="1" <%= voted?(@post.id, 1) %>>&#9650;</button>
+        <button type="submit" name="vote" value="-1" <%= voted?(@post.id, -1) %>>&#9660;</button>
+      </form>
+      <span class><%= @post.text %></span>
+      <br>
+        <small>
+          <span id="post-<%=@post.id%>-vote-sum"><%= @post.vote_sum %></span> points
+          by <%= @post.name_type %> |
+          <%= @post.comments.count %> comments
+        </small>
+    </div>
+  </div>
+  <div class="feedback-comments">
+    <%= erb :'/partials/_comments_accordion' %>
+  </div>
+</div>
